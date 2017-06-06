@@ -2,23 +2,25 @@
 "use strict"
 module.exports={
     
-getPrime:(n) =>{
-    var primes = [];
-    for(var i = 2; i < n; i++) {
-        primes[i] = true;
+getPrime: (n)=>{
+  var arr = [];
+  if(n < 1){
+      return undefined
+  }
+  if(typeof n !== "number"){
+        return 'undefined';
     }
-    for(i = 2; i < n; i++) {
-        if(primes[i] === true) {
-            for(var j = i * i; j < n; j += i) {
-                primes[j] = false;
-            }
-        }
+  for (var counter = 0; counter <= n; counter++){
+    for (var i = 2; i <= counter; i++){
+      if(counter === i){
+        arr.push(i);
+      }
+      if(counter % i === 0){
+        break;
+      }
     }
-    for(i = 2; i < n; i++) {
-        if(primes[i] === true) {
-          console.log(i)
-        }
-    }
+  }
+  return arr;
 }
 }
 
